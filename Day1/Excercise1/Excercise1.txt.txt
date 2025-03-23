@@ -1,0 +1,84 @@
+
+Setting environment for using XAMPP for Windows.
+P. Kisha@ZED_AIR_CX5 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 12
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| uov                |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> create database uni
+    -> create database uni;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'create database uni' at line 2
+MariaDB [(none)]> create database uni;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| uni                |
+| uov                |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> use uni;
+Database changed
+MariaDB [uni]> create table students(Std_id VARCHAR(15),Name VARCHAR(30),DOB DATE,City VARCHAR(30),Course VARCHAR(20));
+Query OK, 0 rows affected (0.112 sec)
+
+MariaDB [uni]> DESC students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Std_id | varchar(15) | YES  |     | NULL    |       |
+| Name   | varchar(30) | YES  |     | NULL    |       |
+| DOB    | date        | YES  |     | NULL    |       |
+| City   | varchar(30) | YES  |     | NULL    |       |
+| Course | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.015 sec)
+
+MariaDB [uni]> INSERT INTO students VALUES('2022/asp/46','Kisha','2003-08-12','Batticaloa','AMC');
+Query OK, 1 row affected (0.079 sec)
+
+
+MariaDB [uni]> select * from students;
++--------------+---------+------------+------------+--------+
+| Std_id       | Name    | DOB        | City       | Course |
++--------------+---------+------------+------------+--------+
+| 2022/asp/46  | Kisha   | 2003-08-12 | Batticaloa | AMC    |
+| 2022/asp/45  | Disha   | 2003-12-15 | Batticaloa | AMC    |
+| 2022/asp/53  | Avithka | 2002-11-20 | Batticaloa | AMC    |
+| 2022/ICT/107 | ICT     | 2002-04-26 | Batticaloa | AMC    |
++--------------+---------+------------+------------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [uni]>
+
+
+
+
+Conclusion :- I have learnt about how to create the database, how to create the table, How to show the datase and how can we add the datas.

@@ -1,0 +1,73 @@
+
+Setting environment for using XAMPP for Windows.
+P. Kisha@ZED_AIR_CX5 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 14
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| uni                |
+| uov                |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> use uov;
+Database changed
+MariaDB [uov]> create table Employee(Physician_ID VARCHAR(10) ,Name VARCHAR(30),Position VARCHAR(30));
+Query OK, 0 rows affected (0.128 sec)
+
+MariaDB [uov]> DESC Employee;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Physician_ID | varchar(10) | YES  |     | NULL    |       |
+| Name         | varchar(30) | YES  |     | NULL    |       |
+| Position     | varchar(30) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.081 sec)
+
+
+
+MariaDB [uov]> INSERT INTO Employee VALUES(
+    -> '1','John Dorian','Staff Internist'),
+    -> ('2','Ellior Reid','Attending Physiscian'),
+    -> ('3','Christopher Turk','Sugical Attending Physician'),
+    -> ('4','Percival cox','Senior Attending Physician'),
+    ->  ('5','Keith Dudemeister','Md Resident'),
+    ->  ('6','Molly Clock','Attending Physiscian');
+Query OK, 6 rows affected (0.064 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+MariaDB [uov]> select * from Employee;
++--------------+-------------------+-----------------------------+
+| Physician_ID | Name              | Position                    |
++--------------+-------------------+-----------------------------+
+| 1            | John Dorian       | Staff Internist             |
+| 2            | Ellior Reid       | Attending Physiscian        |
+| 3            | Christopher Turk  | Sugical Attending Physician |
+| 4            | Percival cox      | Senior Attending Physician  |
+| 5            | Keith Dudemeister | Md Resident                 |
+| 6            | Molly Clock       | Attending Physiscian        |
++--------------+-------------------+-----------------------------+
+6 rows in set (0.000 sec)
+
+
+
+
+
+Conclusion:-
+I have learnt about How to create the table and add the data
