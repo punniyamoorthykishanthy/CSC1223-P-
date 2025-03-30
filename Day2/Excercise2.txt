@@ -1,0 +1,157 @@
+P. Kisha@ZED_AIR_CX5 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| uni                |
+| uov                |
++--------------------+
+7 rows in set (0.001 sec)
+
+
+
+MariaDB [uov]> SHOW tables;
++---------------+
+| Tables_in_uov |
++---------------+
+| employee      |
+| patients      |
+| students      |
++---------------+
+3 rows in set (0.001 sec)
+
+
+MariaDB [uov]> DROP TABLE patients;
+Query OK, 0 rows affected (0.255 sec)
+
+MariaDB [uov]> create table Patients(Patients_Id INT primary key,Name VARCHAR(20),Address VARCHAR(20),Phone_number VARCHAR(15));
+Query OK, 0 rows affected (0.159 sec)
+
+MariaDB [uov]> DESC patients;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Patients_Id  | int(11)     | NO   | PRI | NULL    |       |
+| Name         | varchar(20) | YES  |     | NULL    |       |
+| Address      | varchar(20) | YES  |     | NULL    |       |
+| Phone_number | varchar(15) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.017 sec)
+
+MariaDB [uov]> INSERT INTO patients(Patients_Id,Name,Address,Phone_number)VALUES
+    ->  (100000001,'John Smith','42 foobay lane','555_0256'),
+    -> (100000002,'Grace Ritchie','37 snafu drive','555_0512'),
+    -> (100000003,'Todd Quinla','101 Omgbbq Street','555_1204'),
+    -> (100000004,'Dennis Doe', '1100 Fobaz Avenue','555_2048');
+Query OK, 4 rows affected (0.062 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [uov]> select * from patients;
++-------------+---------------+-------------------+--------------+
+| Patients_Id | Name          | Address           | Phone_number |
++-------------+---------------+-------------------+--------------+
+|   100000001 | John Smith    | 42 foobay lane    | 555_0256     |
+|   100000002 | Grace Ritchie | 37 snafu drive    | 555_0512     |
+|   100000003 | Todd Quinla   | 101 Omgbbq Street | 555_1204     |
+|   100000004 | Dennis Doe    | 1100 Fobaz Avenue | 555_2048     |
++-------------+---------------+-------------------+--------------+
+4 rows in set (0.001 sec)
+
+
+
+MariaDB [uov]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| uni                |
+| uov                |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [uov]> DROP database uni;
+Query OK, 1 row affected (0.565 sec)
+
+MariaDB [uov]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| uov                |
++--------------------+
+6 rows in set (0.001 sec)
+
+
+
+MariaDB [uov]> DROP TABLE Students;
+Query OK, 0 rows affected (0.136 sec)
+
+MariaDB [uov]> SHOW tables;
++---------------+
+| Tables_in_uov |
++---------------+
+| employee      |
+| patients      |
++---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [uov]> create table Students(student_id SMALLINT primary key,Name varchar(20),Age int,Grade char(1), City varchar(20));
+Query OK, 0 rows affected (0.121 sec)
+
+MariaDB [uov]> DESC Students;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | smallint(6) | NO   | PRI | NULL    |       |
+| Name       | varchar(20) | YES  |     | NULL    |       |
+| Age        | int(11)     | YES  |     | NULL    |       |
+| Grade      | char(1)     | YES  |     | NULL    |       |
+| City       | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.018 sec)
+
+
+
+MariaDB [uov]> LOAD DATA LOCAL INFILE 'C:/Users/P. Kisha/Desktop/Database type/details.csv'
+    -> INTO TABLE Students
+    -> FIELDS TERMINATED BY '\t'
+    -> LINES TERMINATED BY '\n'
+    -> (student_id,Name,Age,Grade,City);
+Query OK, 6 rows affected, 4 warnings (0.058 sec)
+Records: 6  Deleted: 0  Skipped: 0  Warnings: 4
+
+MariaDB [uov]> select * from Students;
++------------+---------+------+-------+-------------+
+| student_id | Name    | Age  | Grade | City        |
++------------+---------+------+-------+-------------+
+   |       1 | Alice   |   20 | A     | New York
+|          2 | Bob     |   22 | B     | B           |
+   |       3 | Charlie |   21 | A     | New York
+|          4 | David   |   23 | C     | Charlie     |
+    |      5 | Emma    |   22 | B     | Chicago
+|          6 | Frank   |   20 | A     | Los Angeles |
++------------+---------+------+-------+-------------+
+6 rows in set (0.001 sec)
